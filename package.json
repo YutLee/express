@@ -21,7 +21,9 @@
     "vue-server-renderer": "^2.0.5"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.14",
     "html-webpack-plugin": "^2.24.1",
+    "shelljs": "^0.7.5",
     "vue": "^2.0.5",
     "webpack": "^1.13.3"
   }

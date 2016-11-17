@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 module.exports = {
   devtool: '#source-map',
@@ -13,7 +15,19 @@ module.exports = {
     publicPath: '/',
     filename: 'js/[name].[chunkhash:8].js'
   },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.js'
+    }
+  },
   plugins:[
+    //清空目录
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname, '../'),// 一个根的绝对路径.
+      // verbose: true,// 将log写到 console.
+      // dry: false,// 不要删除任何东西，主要用于测试.
+      // exclude: ['shared.js']//排除不删除的目录，主要用于避免删除公用的文件
+    }),
     new HtmlWebpackPlugin({
         filename: 'html/index.html',
         template: './src/template/index.html',
